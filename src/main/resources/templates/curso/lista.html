@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}" />
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+<title>Cadastro de curso</title>
+</head>
+<body>
+
+	<nav th:replace="fragments/cabecalho :: cabecalho"></nav>
+
+
+
+	<div class="container">
+
+
+		<form th:action="@{/curso/pesquisa}">
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label for="formGroupExampleInput">Pesquisa</label> <input
+							type="text" class="form-control" id="pesquisa" name="termo">
+					</div>
+					 <button class="btn btn-primary" type="submit">Pesquisar</button>
+				</div>
+			</div>
+		</form>
+
+		<div class="container row">
+
+			<a th:href="@{/curso/novo}">Novo</a> <span th:text="${mensagem}"></span>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Código</th>
+					<th>Nome</th>
+					<th>Excluir</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="curso: ${dados}">
+					<td><a
+						th:href="@{/curso/visualizar/{codcurso}(codcurso=${curso.codigo})}"
+						th:text="${curso.codigo}"></a></td>
+					<td th:text="${curso.nome}" />
+					<td><a
+						th:href="@{/curso/remover/{codcurso}(codcurso=${curso.codigo})}">
+							Excluir</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+
+</body>
+</html>
