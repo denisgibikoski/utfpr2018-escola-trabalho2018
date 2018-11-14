@@ -2,28 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}" />
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
 <title>Cadastro de aluno</title>
 </head>
 <body>
-	
-	<form th:action="@{/aluno/salvar}" method="post" 
-							th:object="${aluno}">
-	
-		<input type="hidden" th:field="*{codigo}">
-		
-		<label for="nome">Nome:</label>
-		<input type="text" th:field="*{nome}">
-		
-		<label for="dataNascimento">Data nascimento:</label>
-		<input type="date" pattern="dd/mm/yyyy" 
-				th:field="*{dataNascimento}">
-	
-		<input type="submit" value="Salvar"/>
-	
+
+	<nav th:replace="fragments/cabecalho :: cabecalho"></nav>
+	<div class="container">
+	<form th:action="@{/aluno/salvar}" method="post" th:object="${aluno}">
+
+		<h1 class="display-1">Cadastro de Aluno</h1>
+		<input type="hidden" th:field="*{codigo}"> <label for="nome">Nome:</label>
+		<input type="text" th:field="*{nome}"> <label
+			for="dataNascimento">Data nascimento:</label> <input type="date"
+			pattern="dd/mm/yyyy" th:field="*{dataNascimento}"> <input
+			type="submit" value="Salvar" />
+
 	</form>
+</div>
 
 
 
+
+<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 package br.edu.utfpr.escola.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -27,6 +29,9 @@ public class Aluno {
 	private String nome;
 	
 	private LocalDate dataNascimento;
+	
+	@OneToMany
+	private List<Curso> cursos;
 
 	public Aluno(){
 		

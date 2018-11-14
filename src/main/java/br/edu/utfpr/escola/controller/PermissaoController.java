@@ -1,8 +1,6 @@
 package br.edu.utfpr.escola.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.SortDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,46 +9,48 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.edu.utfpr.escola.model.Aluno;
-import br.edu.utfpr.escola.repositorio.AlunoRepositorio;
+import br.edu.utfpr.escola.model.Permissao;
+import br.edu.utfpr.escola.repositorio.PermissaoRepositorio;
 
 @Controller
-@RequestMapping("/aluno") //todas as urls irão iniciar com /curso
-public class AlunoController {
+@RequestMapping("/permissao") //todas as urls irão iniciar com /curso
+public class PermissaoController {
 
 	@Autowired
-	private AlunoRepositorio alunoRepositorio;
+	private PermissaoRepositorio repositorio;
 	
 	@GetMapping("/")
-	public String lista(Model model, @SortDefault("nome") Pageable pageable){
+	public String lista(Model model){
 		//${dados} será a variável disponível no template thymeleaf
-		model.addAttribute("dados",alunoRepositorio.findAll(pageable));
-		return "aluno/lista"; //arquivo .html dentro da pasta resources/templates
+		model.addAttribute("dados",repositorio.findAll());
+		return "permissao/lista"; //arquivo .html dentro da pasta resources/templates
 	}
+	
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@GetMapping("/novo")
 	public String novo(Model model){
-		model.addAttribute("aluno", new Aluno());
-		return "aluno/formulario";
+		model.addAttribute("permissao", new Permissao());
+		return "permissao/formulario";
 	}
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@PostMapping("/salvar")
-	public String salvar(Aluno aluno){
-		alunoRepositorio.save(aluno);
-		return "redirect:/aluno/";
+	public String salvar(Permissao permissao){
+		permissao.setAuthority("ROLE_"+permissao.getAuthority().toUpperCase());
+		repositorio.save(permissao);
+		return "redirect:/permissao/";
 	}
 	
 	@GetMapping("/visualizar/{codigo}")
 	public String visualizar(@PathVariable Long codigo, Model model){
-		model.addAttribute("aluno", alunoRepositorio
-							.findById(codigo).orElse(new Aluno()));
-		return "aluno/formulario";
+		model.addAttribute("aluno", repositorio
+							.findById(codigo).orElse(new Permissao()));
+		return "permissao/formulario";
 	}
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@GetMapping("/remover/{codigo}")
 	public String remover(@PathVariable Long codigo, Model model){
-		alunoRepositorio.deleteById(codigo);
-		return "redirect:/aluno/";
+		repositorio.deleteById(codigo);
+		return "redirect:/permissao/";
 	}
 	
 	

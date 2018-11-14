@@ -20,7 +20,7 @@ public class Disciplina {
 	@Column(length = 150, nullable = false)
 	private String nome;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Curso.class )
 	private Curso curso;
 
 	public Disciplina() {

@@ -1,7 +1,7 @@
 a) Possibilitar que alunos façam a 
 matricula em disciplinas dos cursos;
-1 - ADM cria o cadastro do aluno;
-2 - ADM cria o usuário do aluno;
+1 - ADM cria o cadastro do aluno; Pronto
+2 - ADM cria o usuário do aluno; Pronto
 3 - Aluno entra no sistema e realiza 
 a matricula no curso desejado;
 4 - O Aluno pode escolher qualquer disciplina
@@ -18,7 +18,7 @@ para o aluno em sua disciplina
 alunos matriculados nas disciplinas
 
 
-c) Colocar o botão e input de pesquisa na tela de curso.
+c) Colocar o botão e input de pesquisa na tela de curso.  Pronto
 
 
 

@@ -2,15 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}" />
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+
 <title>Cadastro de usuarios</title>
 </head>
 <body>
+
+	<nav th:replace="fragments/cabecalho :: cabecalho"></nav>
+	<div class="container">
 	
-	<a th:href="@{/usuario/novo}">Novo</a>
+	<th:block th:insert="fragments/buttons::novo(usuario)" />
 	
 	<span th:text="${mensagem}"></span>
 	
-	<table>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>Código</th>
@@ -30,8 +38,12 @@
 			</tr>		
 		</tbody>
 	</table>
-
-
+</div>
+<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+	
 
 
 
