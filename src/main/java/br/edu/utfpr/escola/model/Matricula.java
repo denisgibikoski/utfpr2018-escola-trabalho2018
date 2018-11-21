@@ -1,5 +1,6 @@
 package br.edu.utfpr.escola.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -35,11 +36,12 @@ public class Matricula {
 	@GeneratedValue(generator = "matricula_seq", strategy = GenerationType.SEQUENCE)
 	private Long codigo;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private Aluno aluno;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private Disciplina disciplina;
+
 
 	private Double nota;
 	
@@ -98,12 +100,12 @@ public class Matricula {
 		this.usuario = usuario;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Matricula [codigo=" + codigo + ", aluno=" + aluno + ", disciplina=" + disciplina + ", nota=" + nota
 				+ ", usuario=" + usuario + "]";
 	}
-
 	
 	
 }

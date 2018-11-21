@@ -75,7 +75,7 @@
 			<label>Disciplina : </label>
 			<input type="text" th:field="*{disciplina.nome}">
 			<label>Nota :</label> 
-			<input type="number" th:field="${nota}"	th:value="${nota}" min="0" max="10">
+			<input type="number" th:field="*{nota}"	th:value="*{nota}" min="0" max="10">
 			
 			<input type="submit" value="Atualizar" />
 

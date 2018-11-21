@@ -70,17 +70,18 @@ public class MatriculaController {
 		return "redirect:/matricula/";
 	}
 
-	@PostMapping("/atualizar/{codigo}")
-	public String atualizar(@PathVariable Long codigo,@Valid Matricula matricula,
+	@PostMapping("/atualizar")
+	public String atualizar(@Valid Matricula matricula,
 			BindingResult erros, Model model, RedirectAttributes redirect) {
 		
 		if (erros.hasErrors()) {
 			return "matricula/formulario";
 		}
 		
-		matricula.setAluno(alunoRespositorio.findById(codigo).orElse(null));
-
+	
+		System.out.println(matricula.toString());
 		redirect.addFlashAttribute("mensagem", "Registro salvo com sucesso");
+		
 		matriculaRepositorio.save(matricula);
 		return "redirect:/matricula/";
 	}
