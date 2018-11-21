@@ -9,5 +9,7 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
 
 	@EntityGraph(attributePaths="permissoes")
 	Usuario findByUsername(String username);
+	
+	Usuario findByNome(String nome);
 
 }

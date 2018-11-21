@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}" />
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+<title>Matriculas</title>
+</head>
+<body>
+
+	<nav th:replace="fragments/cabecalho :: cabecalho"></nav>
+
+
+
+	<div class="container">
+
+		<div class="container row">
+		
+		
+		<div  sec:authorize="hasRole('ALUNO')"> 
+			<th:block th:insert="fragments/buttons::novo(matricula)" />
+			
+		</div>	
+			 <span th:text="${mensagem}"></span>
+			 
+		</div>
+		
+		<h2>Lista de Matriculas</h2>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th sec:authorize="hasRole('PROFESSOR')">Código</th>
+					<th>Aluno</th>
+					<th>Disciplina</th>
+					<th>Nota</th>
+					<th>Usuario</th>
+					<th sec:authorize="hasRole('PROFESSOR')">Excluir</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="matricula: ${matriculas}">
+					<td sec:authorize="hasRole('PROFESSOR')"><a th:href="@{/matricula/visualizar/{codmatricula}(codmatricula=${matricula.codigo})}" th:text="${matricula.codigo}"></a></td>
+					<td th:text="${{matricula.aluno}}" />
+					<td th:text="${{matricula.disciplina}}" />
+					<td th:text="${matricula.nota}" />
+					<td th:text="${{matricula.usuario.nome}}" />
+					<td sec:authorize="hasRole('PROFESSOR')"><a th:href="@{/matricula/remover/{codmatricula}(codmatricula=${matricula.codigo})}">Excluir</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+
+</body>
+</html>

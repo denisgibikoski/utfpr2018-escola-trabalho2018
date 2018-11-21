@@ -12,7 +12,7 @@ import br.edu.utfpr.escola.model.Aluno;
 @RestResource(path="restAluno")
 public interface AlunoRepositorio extends JpaRepository<Aluno, Long> {
 
-	List<Aluno> findByNomeLike(String nome);
+	Aluno findByNomeLike(String nome);
 
 	@Query("select a from Aluno a where a.dataNascimento > ?1")
 	List<Aluno> dataNascimentoMaiorQue(LocalDate data);

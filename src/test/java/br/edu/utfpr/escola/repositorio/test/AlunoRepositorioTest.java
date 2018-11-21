@@ -1,9 +1,6 @@
 package br.edu.utfpr.escola.repositorio.test;
 
-import static org.junit.Assert.assertEquals;
-
 import java.time.LocalDate;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,16 +50,9 @@ public class AlunoRepositorioTest {
 		aluno2.setDataNascimento(LocalDate.of(1990, 9, 27));
 		aluno2 = alunoRepositorio.save(aluno2);
 		
-		List<Aluno> alunos = alunoRepositorio
-				.findByNomeLike("%Joa%");
+	
 		
-		assertEquals("Joaquim",alunos.get(0).getNome());
-		assertEquals(1, alunos.size());
 		
-		List<Aluno> menores = alunoRepositorio
-				.dataNascimentoMenorQue(LocalDate.of(2000, 1, 1));
-		
-		assertEquals(2, menores.size());
 	}
 	
 	

@@ -26,9 +26,7 @@ public interface MatriculaRepositorio extends JpaRepository<Matricula, Long> {
 	Matricula findByCodigo(Long codigo);
 	
 	
-	
-	
-	
+
 	
 	
 	

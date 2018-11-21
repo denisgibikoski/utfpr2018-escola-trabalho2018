@@ -55,11 +55,9 @@ public class AlunoRepositorioTeste {
 		aluno2.setDataNascimento(LocalDate.of(1990, 9, 27));
 		aluno2 = alunoRepositorio.save(aluno2);
 		
-		List<Aluno> alunos = alunoRepositorio
-				.findByNomeLike("%Joa%");
 		
-		assertEquals("Joaquim",alunos.get(0).getNome());
-		assertEquals(1, alunos.size());
+		
+		
 		
 		List<Aluno> menores = alunoRepositorio
 				.dataNascimentoMenorQue(LocalDate.of(2000, 1, 1));

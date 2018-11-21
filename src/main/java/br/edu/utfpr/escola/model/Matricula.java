@@ -51,10 +51,11 @@ public class Matricula {
 		
 	}
 
-	public Matricula(Aluno aluno, Disciplina disciplina) {
+	public Matricula(Aluno aluno, Disciplina disciplina ) {
 		super();
 		this.aluno = aluno;
 		this.disciplina = disciplina;
+	
 	}
 
 	public Long getCodigo() {
@@ -97,4 +98,12 @@ public class Matricula {
 		this.usuario = usuario;
 	}
 
+	@Override
+	public String toString() {
+		return "Matricula [codigo=" + codigo + ", aluno=" + aluno + ", disciplina=" + disciplina + ", nota=" + nota
+				+ ", usuario=" + usuario + "]";
+	}
+
+	
+	
 }
