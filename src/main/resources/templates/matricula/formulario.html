@@ -71,9 +71,10 @@
 			
 			<label>Nome do Aluno : </label>
 			<input type="hidden" th:field="*{codigo}">
-			<input type="text" th:field="*{aluno.nome}">
+			<input type="hidden" th:field="*{usuario.nome}">
+			<input type="text" th:field="*{aluno.nome}" th:value="*{aluno.codigo}">
 			<label>Disciplina : </label>
-			<input type="text" th:field="*{disciplina.nome}">
+			<input type="text" th:field="*{disciplina.nome}" th:value="*{disciplina.codigo}">
 			<label>Nota :</label> 
 			<input type="number" th:field="*{nota}"	th:value="*{nota}" min="0" max="10">
 			

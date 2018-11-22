@@ -36,16 +36,16 @@ public class Matricula {
 	@GeneratedValue(generator = "matricula_seq", strategy = GenerationType.SEQUENCE)
 	private Long codigo;
 
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
 	private Aluno aluno;
 
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
 	private Disciplina disciplina;
 
 
 	private Double nota;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
 	@JoinColumn(updatable=false)
 	private Usuario usuario;
 	
