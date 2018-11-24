@@ -66,7 +66,7 @@ public class MatriculaController {
 		matricula.setAluno(alunoRespositorio.findByNomeLike(usuario.getNome()));
 
 		redirect.addFlashAttribute("mensagem", "Registro salvo com sucesso");
-		matriculaRepositorio.save(matricula);
+		matriculaRepositorio.saveAndFlush(matricula);
 		return "redirect:/matricula/";
 	}
 

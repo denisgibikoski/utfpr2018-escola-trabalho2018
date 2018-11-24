@@ -1,5 +1,6 @@
 package br.edu.utfpr.escola.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -15,7 +16,12 @@ import javax.persistence.SequenceGenerator;
 @NamedQueries(@NamedQuery(name="Aluno.dataNascimentoMenorQue"
 				, query="select a from Aluno a "
 						+ "where a.dataNascimento <= ?1"))
-public class Aluno {
+public class Aluno implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@SequenceGenerator(name="aluno_seq",sequenceName="aluno_seq")

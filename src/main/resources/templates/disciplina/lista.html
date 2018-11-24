@@ -35,7 +35,7 @@
 						th:text="${disciplina.codigo}"></a></td>
 				<td th:text="${disciplina.nome}"/>
 				
-				<td th:text="${disciplina.curso.nome}" />
+				<td th:text="${disciplina.codigo}" />
 				
 				<td><a th:href="@{/disciplina/remover/{coddisciplina}
 									(coddisciplina=${disciplina.codigo})}">

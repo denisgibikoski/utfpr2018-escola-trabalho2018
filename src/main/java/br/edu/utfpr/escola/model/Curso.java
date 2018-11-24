@@ -1,5 +1,7 @@
 package br.edu.utfpr.escola.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,12 @@ import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-public class Curso {
+public class Curso  implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@SequenceGenerator(name="curso_seq",sequenceName="curso_seq")

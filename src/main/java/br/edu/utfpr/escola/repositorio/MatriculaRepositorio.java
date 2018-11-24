@@ -24,6 +24,9 @@ public interface MatriculaRepositorio extends JpaRepository<Matricula, Long> {
 			"disciplina", 
 			"disciplina.curso"})
 	Matricula findByCodigo(Long codigo);
+
+
+	void save(Double setNota);
 	
 	
 

@@ -1,5 +1,7 @@
 package br.edu.utfpr.escola.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,10 +12,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Disciplina {
+public class Disciplina implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name = "disciplina_seq", sequenceName = "disciplina_seq")
+	@SequenceGenerator(name = "disciplina_seq", sequenceName = "disciplina_seq" )
 	@GeneratedValue(generator = "disciplina_seq", strategy = GenerationType.SEQUENCE)
 	private Long codigo;
 

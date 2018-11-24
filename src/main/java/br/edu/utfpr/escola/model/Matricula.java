@@ -1,6 +1,7 @@
 package br.edu.utfpr.escola.model;
 
-import javax.persistence.CascadeType;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,23 +30,31 @@ import javax.persistence.SequenceGenerator;
 				subgraphs={@NamedSubgraph(name="curso", 
 							attributeNodes=
 								@NamedAttributeNode("curso"))})})
-public class Matricula {
+public class Matricula implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@SequenceGenerator(name = "matricula_seq", sequenceName = "matricula_seq")
 	@GeneratedValue(generator = "matricula_seq", strategy = GenerationType.SEQUENCE)
 	private Long codigo;
-
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(updatable=false)
 	private Aluno aluno;
-
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(updatable=false)
 	private Disciplina disciplina;
 
 
 	private Double nota;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
+	
+	@ManyToOne(fetch=FetchType.LAZY )
 	@JoinColumn(updatable=false)
 	private Usuario usuario;
 	
